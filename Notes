@@ -1,0 +1,26 @@
+Angular CLI Options
+	1. ng new app-name
+		--skip-install
+		--dry-run
+		--skip-tests
+		--style scss
+		--routing  --> To create app routing file
+
+	2. ng generate component com-name
+		class
+		directive
+		enum
+		guard
+		interface
+		module
+		pipe
+		service
+			--module=app
+
+		--flat --> this will not create folder for component
+
+	3. ng serve
+		--port 2300
+	4. ng build
+		--prod
+	4. ng eject -->It will disable the CLI for your project and create you a webpack configuration file.
