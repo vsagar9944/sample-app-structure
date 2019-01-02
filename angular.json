@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sample-app-structure": {
+    "simple-app-structure": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sample-app-structure",
+            "outputPath": "dist/simple-app-structure",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sample-app-structure:build"
+            "browserTarget": "simple-app-structure:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sample-app-structure:build:production"
+              "browserTarget": "simple-app-structure:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sample-app-structure:build"
+            "browserTarget": "simple-app-structure:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "sample-app-structure-e2e": {
+    "simple-app-structure-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sample-app-structure:serve"
+            "devServerTarget": "simple-app-structure:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sample-app-structure:serve:production"
+              "devServerTarget": "simple-app-structure:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "sample-app-structure"
+  "defaultProject": "simple-app-structure"
 }

@@ -1,0 +1,878 @@
+Node JS questions
+	1. What is an error-first callback?
+		Typically, the first argument to any callback handler is an optional error object. The argument is null or undefined if there is no error.
+	2. How can you avoid callback hells?
+		modularization: break callbacks into independent functions
+		use a control flow library, like async
+		use generators with Promises
+		use async/await
+		Handle every single error
+		Keep your code shallow
+	3. What are Promises?
+	4. What tools can be used to assure consistent style? Why is it important?
+		Eslint
+		Standards
+	5. What's a stub? Name a use case!  ***
+	6. What's a test pyramid? Give an example!
+		A test pyramid describes the ratio of how many unit tests, integration tests and end-to-end test you should write
+	7. What's your favorite HTTP framework and why?
+	8. When are background/worker processes useful? How can you handle worker tasks?
+		There are lots of options for this like RabbitMQ or Kafka.
+	9. How can you secure your HTTP cookies against XSS attacks?
+		To mitigate these attacks, you have to set flags on the set-cookie HTTP header:
+			HttpOnly - this attribute is used to help prevent attacks such as cross-site scripting since it does not allow the cookie to be accessed via JavaScript.
+			secure - this attribute tells the browser to only send the cookie if the request is being sent over HTTPS.
+	10. How can you make sure your dependencies are safe?
+		npm outdated
+		Trace by RisingStack
+		NSP
+		GreenKeeper
+		Snyk
+	11. How to handle promise rejection
+		If you have to debug a huge codebase, and you don't know which Promise can potentially hide an issue, you can use the unhandledRejection hook. It will print out all unhandled Promise rejections.
+		process.on('unhandledRejection', (err) => {
+			console.log(err)
+		})
+	12. What is timing attacks?
+	13. What is Node.js? Where can you use it?
+	14. Why use Node.js?
+		It is generally fast
+		It almost never blocks
+		It offers a unified programming language and data type
+		Everything is asynchronous
+		It yields great concurrency
+	15. What are the features of Node.js?
+		Node.js is a single-threaded but highly scalable system that utilizes JavaScript as its scripting language. It uses asynchronous, event-driven I/O instead of separate processes or threads. It is able to achieve high output via single-threaded event loop and non-blocking I/O.
+	16. What is event loop ?
+		In Node Js processes are single threaded, to supports concurrency it uses events and callbacks. An event loop is a mechanism that allows Node.js to perform non-blocking I/O operations.
+	17. How do you update NPM to a new version in Node.js?
+		npm install npm -g
+	18. Why is Node.js Single-threaded? ***
+		Node.js is single-threaded for async processing. By doing async processing on a single-thread under typical web loads, more performance and scalability can be achieved as opposed to the typical thread-based implementation.
+	19. Explain callback in Node.js.
+	20. What is callback hell in Node.js?
+	21. Explain the role of REPL in Node.js.		***
+		REPL (Read Eval print Loop)
+		REPL stands for (READ, EVAL, PRINT, LOOP). Node js comes with bundled REPL environment. This allows for the easy creation of CLI (Command Line Interface) applications.
+	22. Name the types of API functions in Node.js.
+		Blocking functions
+		Non-blocking functions
+	23. Which is the first argument typically passed to a Node.js callback handler?
+		Typically, the first argument to any callback handler is an optional error object. The argument is null or undefined if there is no error.
+	24. What are the functionalities of NPM in Node.js?
+	25. Explain chaining in Node.js.
+		Chaining is a mechanism whereby the output of one stream is connected to another stream creating a chain of multiple stream operations
+	26. What are “streams” in Node.js? Explain the different types of streams present in Node.js.
+		Streams are objects that allow reading of data from the source and writing of data to the destination as a continuous process.
+		There are four types of streams.
+			Readable − For reading operation.
+			Writable − For writing operation.
+			Duplex − Used for both read and write operation.
+			Transform − A type of duplex stream where the output is computed based on the input.
+	27. What are exit codes in Node.js? List some exit codes
+		Exit codes are specific codes that are used to end a “process” (a global object used to represent a node process).
+			Examples of exit codes include:
+				Unused
+				Uncaught Fatal Exception
+				Fatal Error
+				Non-function Internal Exception Handler
+				Internal Exception handler Run-Time Failure
+				Internal JavaScript Evaluation Failure
+	28. What are Globals in Node.js?
+		Three keywords in Node.js constitute as Globals. These are
+			Global – it represents the Global namespace object and acts as a container for all other objects.
+			Process – It is one of the global objects but can turn a synchronous function into an async callback. It can be accessed from anywhere in the code and it primarily gives back information about the application or the environment.
+			Buffer – it is a class in Node.js to handle binary data.
+	29. Explain CLI.
+	30. In which Language Node Js is written ?
+		Node js is written in C, C++,JavaScript.It uses Google’s open source V8 Javascript Engine to convert Javascript code to C++.
+	31. Who is the author of Node Js ?
+		Node Js is written by Ryan Dahl.
+	32. Explain What is a Javascript Engine ?
+		A Javascript Engine is a program that converts code written in Javascript to something that computer processor understands.
+	33. Explain Modules in Node Js ?
+		Modules are reusable block of code whose existence does not impact other code in any way. It is not supported by Javascript. Modules are introduced in ES6. Modules are important for Maintainability, Reusability, and Namespacing of Code.
+	34. What are CommonJs Modules ?
+	35. For what require() is used in Node Js ?
+	36. Explain module.exports in Node Js ?
+	37. What are events ?
+		An event is an action or occurrence recognized by software/app that is handled by event handler by writing a code that will be executed when the event fired.
+			Mouse move, Click, file copied or deleted are some examples of events.
+			In Node Js there are two types of events.
+			1)System Events: The event that comes from the C++ side.
+			2)Custom Events: Custom events are user-defined events.
+	38. How to create a simple server in Node js that returns Hello World ?
+	39. Difference between cluster and child_process modules?
+	40. How to stop master process without suspending all of its child processes?
+	41. What does emitter do and what is dispatcher?
+	42. Since node is a single threaded process, how to make use of all CPUs?
+
+
+Express
+	43. What do you mean by Express JS?
+	44. List some features of Express JS.
+		Some of the main features of Express JS are listed below: –
+			It is used for setting up middlewares so as to provide a response to the HTTP or RESTful requests.
+			With the help of express JS, the routing table can be defined for performing various HTTP operations.
+			It is also used for dynamically rendering HTML pages which are based on passing arguments to the templates.
+			It provides each and every feature which is provided by core Node JS.
+			The performance of Express JS is adequate due to the presence of a thin layer prepared by the Express JS.
+			It is used for organizing the web applications into the MVC architecture.
+			Everything from routes to rendering view and performing HTTP requests can be managed by Express JS.
+	45. Write the steps for setting up an Express JS application.
+	46. Name the type of web applications which can be built using Express JS.
+		Single-page, multi-page, and hybrid web applications can be built using Express JS.
+	47. What is the use of Express JS?
+	48. What function are arguments available to Express JS route handlers?
+		The arguments which are available to an Express JS route handler-function are-
+			Req – the request object
+			Res – the response object
+			Next (optional) – a function which is used to pass control to one of the subsequent route handlers.
+			The third argument is optional and may be omitted, but in some cases, it is useful where there is a chain of handlers and control can be passed to one of the subsequent route handlers skipping the current one.
+	49. How to config properties in Express JS?
+	50. How can models be defined in Express JS?
+	51. Which template engine is supported by express JS?
+		Express JS supports any template engine that conforms to the (path, locals, callback) signature.
+	52. Why to use Express.js?
+		Below are the few reasons why to use Express with Node.js
+			Express js is built on top of Node.js. It is the perfect framework for ultra-fast Input / Output.
+			Cross Platform
+			Support MVC Design pattern
+			Support of NoSQL databases out of the box.
+			Multiple templating engine support i.e. Jade or EJS which reduces the amount of HTML code you have to write for a page.
+			Support Middleware, basic web-server creation, and easy routing tools.
+	53. Explain the difference between readFile and createReadStream in Node.js?
+	54. List types of Http requests?
+	54. What is difference between put and patch?
+	55. How can you set default node version using nvm?
+		list installed node versions using
+		nvm ls
+		nvm use NODEVERSION
+		nvm alias default v7.3.0
+	56. Write a simple code to enable CORS in Node js?
+		app.use(function(req, res, next) {
+			res.header("Access-Control-Allow-Origin", "*");
+			res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+			next();
+		})
+	57. List the types of application you can build using Node Js ?
+		Using Node Js you can build applications like:
+			Internet of Things
+			Real-Time Chats Applications
+			Complex Single-Page Applications
+			Real-Time Collaboration Tools
+			Streaming apps
+			Microservices / API’s
+	58. List out some new features introduced in ES6?
+		Following are the list of few new Features introduced in ES6
+			const and let keywords
+			Array helper functions like map, forEach, filter, find, every, some, reduce
+			Arrow functions
+			Classes and enhanced object literals
+			Template strings
+			Default function arguments
+			Rest and spread operators
+			Promises
+			Modules
+			Multi-line Strings
+			Destructuring Assignment
+	59. What is JIT and how is it related to Node?
+	60. How Promises are better than callbacks?
+	61. Describe Node.js event loop and event driver architecture?
+	62. What is difference between return and callback in JavaScript functions?
+	63. How does Promise and Queue work?
+	64. What do you understand by middleware? How can you use middleware in Node Js?
+	65. Explain the difference between process.tick() and setImmediate() ?
+	66. What is the revealing module pattern?
+	67. How does Node.js handle child threads?
+		Node.js, in its essence, is a single thread process. It does not expose child threads and thread management methods to the developer. Technically, Node.js does spawn child threads for certain tasks such as asynchronous I/O, but these run behind the scenes and do not execute any application JavaScript code, nor block the main event loop.
+		If threading support is desired in a Node.js application, there are tools available to enable it, such as the ChildProcess module.
+	68. What is the preferred method of resolving unhandled exceptions in Node.js?
+		Unhandled exceptions in Node.js can be caught at the Process level by attaching a handler for uncaughtException event.
+
+		process.on('uncaughtException', function(err) {
+			console.log('Caught exception: ' + err);
+		});
+		However, uncaughtException is a very crude mechanism for exception handling and may be removed from Node.js in the future. An exception that has bubbled all the way up to the Process level means that your application, and Node.js may be in an undefined state, and the only sensible approach would be to restart everything.
+
+		The preferred way is to add another layer between your application and the Node.js process which is called the domain.
+
+		Domains provide a way to handle multiple different I/O operations as a single group. So, by having your application, or part of it, running in a separate domain, you can safely handle exceptions at the domain level, before they reach the Process level.
+	69. How does Node.js support multi-processor platforms, and does it fully utilize all processor resources?
+		Since Node.js is by default a single thread application, it will run on a single processor core and will not take full advantage of multiple core resources. However, Node.js provides support for deployment on multiple-core systems, to take greater advantage of the hardware. The Cluster module is one of the core Node.js modules and it allows running multiple Node.js worker processes that will share the same port.
+	70.
+
+
+ES6 questions
+	1. What is ES6? ECMASCRIPT 2015
+		 So to write web applications in ES6 that will support all Browsers we needed tools like Babel and Webpack.
+	2. List some new features of ES6
+		New Features in ES6.
+		Support for constants (also known as “immutable variables”)
+		Block-Scope support for both variables, constants, functions
+		Arrow Functions
+		Extended Parameter Handling
+		Template Literals
+		Extended Literals
+		Enhanced Regular Expression
+		Enhanced Object Properties
+		Destructuring Assignment
+		Modules, Classes, Iterators, Generators
+		Support for Map/Set & WeakMap/WeakSet
+		Promises, Meta-Programming ,Internationalization & Localization
+	3. What is Babel?
+	4. List steps to install Babel?
+		npm install --save-dev babel-cli
+	5. What is Webpack?
+	6. List benefits of using Webpack?
+		Benefits of using Webpack.
+			It bundles your multiple modules and packs it into a single .js file.
+			It comes with integrated dev server. A small express app for local development. You simply include one Javascript tag pointed to the server, like localhost:8080/assets/bundle.js, and get live code updating and asset management for free.
+	7. What are template literals in Es6?
+	8. What is Spread Operator in ES6?
+	9. Explain Destructuring Assignment in ES6?
+	10. How to create a Javascript class in ES6?
+
+Basic Javascript Questions [https://www.onlineinterviewquestions.com/advanced-javascript-interview-questions/]
+	1. What is first class functions.
+	2. What is the difference between let and var?
+	3. Explain Closures in JavaScript?
+	4. Explain JavaScript Event Delegation Model?
+		n JavaScript, there is some cool stuff that makes it the best of all. One of them is Delegation Model. When capturing and bubbling, allow functions to implement one single handler to many elements at one particular time then that is called event delegation. Event delegation allows you to add event listeners to one parent instead of specified nodes. That particular listener analyzes bubbled events to find a match on the child elements. Many people think it to be complicated but in reality, it is very simple if one starts understanding it.
+	5. Describe negative infinity in JavaScript?
+		‘dividing negative number by zero’
+		 Its properties are as follows:
+			– A number of objects need not to be created to access this static property.
+			– The value of negative infinity is the same as the negative value of the infinity property of the global object.
+	6. Explain function hoisting in JavaScript?
+	7. The 2 ways of creating functions in JavaScript are Function Declaration and Function Expression
+	8. Explain Arrow functions?
+		An arrow function is a consise and short way to write function expressions in Es6 or above.A rrow functions cannot be used as constructors and also does not supports this, arguments, super, or new.target keywords. It is best suited for non-method functions. In general an arrow function looks like const function_name= ()=>{}
+			const greet=()=>{console.log('hello');}
+			greet();
+	9. What are exports and imports?
+	10. What is difference between module.exports and export?
+	11. How to import all exports of a file as an object.
+	12. Explain “use strict” ?
+		“use strict” is a javascript directive that is introduced in Es5. The purpose of using “use strict” directive is to enforce the code is executed in strict mode. In strict mode we can’t use a variable without declaring it. “use strict” is ignored by earlier versions of Javascript.
+	13. What will happen if an infinite while loop is run in Javascript?
+		The program will crash the browser.
+	14. How to get the primitive value of a string in Javascript?
+		In Javascript valueOf() method is used to get the primitive value of a string.
+	15. What are the primitive data types in JavaScript?
+		 undefined, null, boolean, string and number
+	16. Explain Event bubbling and Event Capturing in JavaScript?
+			Event Bubbling Bubbling just works like the bubbles, the event gets handled by the innermost element and then propagated to the outer element.
+			Event Capture ,the event is captured first by the outermost element and then propagated to the innermost element. For example:
+	17. What does the instanceof operator do?
+		In Javascript instanceof operator checks whether the object is an instance of a class or not:
+	18. What is Javascript BOM?
+		BOMS – window, screen, location, history, navigator, timing, cookies.
+	19. What are different types of Popup boxes available in Javascript?
+		Alert
+		Confirm
+		Prompt
+	20. What is the difference between the substr() and substring() functions in JavaScript?
+	21. What are different types of Inheritence? Which Inheritance is followed in Javascript.
+		Protype Inheritance
+			function Parent(){
+				this.name = "Parent";
+				this.age = 60;
+				this.getAge = function(){
+					return this.age;
+				}
+			}
+			function Child(){
+				this.name = "Child";
+				this.age=20;
+				this.getName = function(){
+					return this.name;
+				}
+			}
+			// Defining method in Parent prototype this will get inheritated by Child
+			Parent.prototype.getDetail = function(){
+				return this.name +" "+ this.age;
+			}
+			// Performing Prototype Inheritance
+			Child.prototype = Parent.prototype;
+
+	22. How to clone/copy an object in Javascript?
+		1. Object.assign({},x)			Shollow Copy
+		2. Object Destructuring
+	23. List different ways of empty an array in Javascript?
+		1. By assigning an empty array.  arr1=[];
+		2. By assigning array length to 0.		arr1.length = 0;
+		3. By poping the elements of the array.
+		4. By using .splice() .		arr.splice(0,arr.length)
+	24. How to encode and decode a URL in JavaScript?
+		encodeURI()
+		decodeURI()
+	25. What is difference between deep and shallow object coping in JavaScript?
+	26. Explain higher-order functions in JavaScript?
+	27. Explain few difference between null, undefined or undeclared JavaScript variable?
+	28. How host objects are different from native objects in JavaScript?
+	29. Explain spread operator in JavaScript?
+	30. Explain Promise in JavaScript?
+	31. What is difference between Array.splice() and Array.slice() method in JavaScript?
+	32. What are different types of Scope Chain available in JavaScript?
+	33. How to redirect a page to another page in Javascript?
+
+
+Javascript Variable scopes and hoisting
+	Local Variables (Function-level scope)
+		Local Variables Have Priority Over Global Variables in Functions
+	Global Variables
+		If a variable is initialized (assigned a value) without first being declared with the var keyword, it is automatically added to the global context and it is thus a global variable:
+		setTimeout Variables are Executed in the Global Scope
+		Do not Pollute the Global Scope
+	Variable Hoisting
+		All variable declarations are hoisted (lifted and declared) to the top of the function, if defined in a function, or the top of the global context, if outside a function.
+		It is important to know that only variable declarations are hoisted to the top, not variable initialization or assignments (when the variable is assigned a value).
+		Function Declaration Overrides Variable Declaration When Hoisted
+	Function scopes and block scopes in JavaScript
+
+JavaScript functions
+	1. Functions are assigned by value reference
+	2. Scopes have a lifetime
+	3. Closures span multiple scopes
+	4. Don’t confuse closures with scopes
+	5. Closures have read and write access
+	variable-arity, also known as variadic functions, Example
+	Math.max
+
+Closour
+	A closure is an inner function that has access to the outer (enclosing) function’s variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.
+	Closures’ Rules and Side Effects
+		1. Closures have access to the outer function’s variable even after the outer function returns
+		2. Closures store references to the outer function’s variables
+		3. Closures Gone Awry
+		4. closure does not give us a copy of these variables but rather a reference to them
+Immediately Invoked Function Expression (IIFE)
+
+JavaScript Higher-order Functions, aka Callback Functions
+	They can be “stored in variables, passed as arguments to functions, created within functions, and returned from functions"
+	Callback functions are derived from a programming paradigm known as functional programming.
+	Callback Functions Are Closures
+	Basic Principles when Implementing Callback Functions
+		1. Use Named OR Anonymous Functions as Callbacks
+		2. Pass Parameters to Callback Functions
+		3. Make Sure Callback is a Function Before Executing It
+		4. Problem When Using Methods With The this Object as Callbacks
+		5. Multiple Callback Functions Allowed
+
+	“Callback Hell” Problem And Solution
+
+Javascript Objects
+	1. primitive and Non-primitive data types
+	2. Object Reference
+	3. Object creation
+		1. {}
+		2. new Object()
+		3. Constructure Function
+		4. Prototype Pattern for Creating Objects
+	4. Property accessing
+	5. Object Cloning
+	6. Object Inheritance
+	7. Object Prototype
+		every JavaScript function has a prototype property
+		prototype in JavaScript is the prototype attribute
+		Prototype Attribute of Objects Created with new Object () or Object Literal		-->Object.prototype is the prototype attribute
+		Prototype Attribute of Objects Created With a Constructor Function		-->	get their prototype from the constructor function
+		Any array such as var myArray = new Array (), gets its prototype from Array.prototype and it inherits Array.prototype’s properties.
+	8. Deleting Properties of an Object
+	9. Serialize and Deserialize Objects
+	10. obj.constructor
+	11. Why is Prototype Important and When is it Used?
+		Prototype Property: Prototype-based Inheritance
+		Prototype Attribute: Accessing Properties on Objects
+			Similarly, if you want to access a property of an object, the search for the property begins directly on the object. If the JS runtime can’t find the property there, it then looks for the property on the object’s prototype—the object it inherited its properties from.
+			If the property is not found on the object’s prototype, the search for the property then moves to prototype of the object’s prototype (the father of the object’s father—the grandfather). And this continues until there is no more prototype (no more great-grand father; no more lineage to follow). This in essence is the prototype chain: the chain from an object’s prototype to its prototype’s prototype and onwards. And JavaScript uses this prototype chain to look for properties and methods of an object.If the property does not exist on any of the object’s prototype in its prototype chain, then the property does not exist and undefined is returned.
+	12.
+
+
+
+
+JavaScript’s “this”
+	when a function executes, it gets the this property—a variable with the value of the object that invokes the function where this is used.
+	The this reference ALWAYS refers to (and holds the value of) an object—a singular object—and it is usually used inside a function or a method, although it can be used outside a function in the global scope.
+	Note that when we use strict mode, this holds the value of undefined in global functions and in anonymous functions that are not bound to any object.
+
+	this is used inside a function (let’s say function A) and it contains the value of the object that invokes function.  We need this to access methods and properties of the object that invokes function A, especially since we don’t always know the name of the invoking object, and sometimes there is no name to use to refer to the invoking object. Indeed, this is really just a shortcut reference for the “antecedent object”—the invoking object.
+
+	The this value is also bound to another object if we assign the method (where this is defined) to a variable.
+
+	Here are scenarios when the this keyword becomes tricky.
+		1. Fix this when used in a method passed as a callback
+			this will now refer to the object where the user.clickHandler method is executed because this is defined inside the user.clickHandler method.
+			when we execute a method on some other object than where the object was originally defined, the this keyword no longer refers to the original object where “this” was originally defined, but it now refers to the object that invokes the method where this was defined.
+		2. Fix this inside closure
+			It is important to take note that closures cannot access the outer function’s this variable by using the this keyword because the this variable is accessible only by the function itself, not by inner functions
+			this inside the anonymous function cannot access the outer function’s this, so it is bound to the global window object, when strict mode is not being used. When strict mode use then this will be undefined
+			Solution to maintain this inside anonymous functions:
+				1. we use a common practice in JavaScript and set the this value to another variable before we enter the forEach
+		3. Fix this when method is assigned to a variable
+			When we assign any object method to a variable then context of method changes so that value of this also get changed.
+			To solve this we can use bind method to bind this to assigned variable
+				var showUserData = user.showData.bind (user);
+
+		4. Fix this when borrowing methods
+			To fix the issue and make sure that this inside the appController.avg () method refers to gameController, we can use the apply () method thus:
+
+	1. Global Scope
+	console.log(this);		//this holds window object
+
+	function demo(){
+		console.log("Inside demo function",this);  //this holds window object
+	}
+
+	var obj = {
+		name:"DemoObj",
+		method:function(){
+			console.log(this.name)  //this holds obj object
+		}
+	}
+
+	var a = function(){
+		console.log(this)		// this hold window object
+	}
+
+2. Global Scope with strict mode
+	"use strict";
+	console.log(this);		//this holds window object
+
+	function demo(){
+		console.log("Inside demo function",this);  //this holds undefined
+	}
+
+	var obj = {
+		name:"DemoObj",
+		method:function(){
+			console.log(this.name)  //this holds obj object
+		}
+	}
+	// Annonymous function
+	var a = function(){
+		console.log(this)		// undefined
+	}
+
+
+2. Borrowing method
+	var gameController = {
+		scores  :[20, 34, 55, 46, 77],
+		avgScore:null,
+		players :[
+			{
+				name:"Tommy",
+				playerID:987,
+				age:23
+			},
+			{
+				name:"Pau",
+				playerID:87,
+				age:33
+			}
+		]
+    }
+	var appController = {
+		scores  :[900, 845, 809, 950],
+		avgScore:null,
+		avg     :function () {
+			var sumOfScores = this.scores.reduce (function (prev, cur, index, array) {
+				return prev + cur;
+			});
+			this.avgScore = sumOfScores / this.scores.length;
+		}
+    }
+
+	// Borrowing method
+		appController.avg.apply (gameController, gameController.scores);
+
+JavaScript’s Apply, Call, and Bind Methods
+	Apply, CAll from --> ECMASCRIPT 3
+	Bind  --> ECMASCRIPT 5
+	Apply and Call are nearly identical and are frequently used in JavaScript for borrowing methods and for setting the this value explicitly
+	On the other hand, we use Bind for setting the this value in methods and for currying functions.
+
+	Apply and call method are used to bind this during execution of a method
+	Bind is used when we are assigning method reference to a variable and executing in another context.
+
+	Bind Method
+		We use the Bind () method primarily to call a function with the this value set explicitly. It other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
+
+		The need for bind usually occurs when we use the this keyword in a method and we call that method from a receiver object; in such cases, sometimes this is not bound to the object that we expect it to be bound to, resulting in errors in our applications.
+
+		Bind () Allows us to Borrow Methods
+			cars.showData = user.showData.bind (cars);
+			cars.showData()
+
+			One problem with this example is that we are adding a new method (showData) on the cars object and we might not want to do that just to borrow a method because the cars object might already have a property or method name showData.
+
+		JavaScript’s Bind Allows Us to Curry a Function
+			Function Currying, also known as partial function application, is the use of a function (that accept one or more arguments) that returns a new function with some of the arguments already set.
+			When we want to preset some of the arguments of a function we use currying
+				function greet (gender, age, name) {
+					// if a male, use Mr., else use Ms.
+					var salutation = gender === "male" ? "Mr. " : "Ms. ";
+
+					if (age > 25) {
+						return "Hello, " + salutation + name + ".";
+					}
+					else {
+						return "Hey, " + name + ".";
+					}
+				}
+				// So we are passing null because we are not using the "this" keyword in our greet function.
+				var greetAnAdultMale = greet.bind(null,"male",45);
+				greetAnAdultMale ("John Hartlove"); // "Hello, Mr. John Hartlove."
+
+	JavaScript’s Apply and Call Methods
+		they allow us to borrow functions and set the this value in function invocation.
+		the apply function in particular allows us to execute a function with an array of parameters, such that each parameter is passed to the function individually when the function executes
+
+		The apply and call methods are almost identical when setting the this value except that you pass the function parameters to apply () as an array, while you have to list the parameters individually to pass them to the call () method.
+
+		Use Call or Apply To Set this in Callback Functions
+		Borrowing Functions with Apply and Call
+			1. Borrowing Array Methods
+				Array-like Object: An array-like object is an object that has its keys defined as non-negative integers. It is best to specifically add a length property on the object that has the length of the object, since the a length property does not exist on objects it does on Arrays.
+
+					var anArrayLikeObj = {0:"Martin", 1:78, 2:67, 3:["Letta", "Marieta", "Pauline"], length:4 };
+					var newArray = Array.prototype.slice.call (anArrayLikeObj, 0);
+					Array.prototype.indexOf.call (anArrayLikeObj, "Martin") === -1 ? false : true
+					// Reverse the object:
+					console.log (Array.prototype.reverse.call (anArrayLikeObj));
+					// Sweet. We can pop too:
+					console.log (Array.prototype.pop.call (anArrayLikeObj));
+
+				The arguments object that is a property of all JavaScript functions is an array-like object, and for this reason, one of the most popular uses of the call () and apply () methods is to extract the parameters passed into a function from the arguments object.
+			2. Borrowing String Methods with Apply and Call
+
+			what will happen if the original definition of the method we are borrowing changes. Will the borrowed (copied) method change as well, or is the copied method a full copy that does not refer back to the original method?
+				we never made a full copy of the method, we simply borrowed it
+
+		Math.max method does not accept array of number as input to check max value in array use apply method as
+			Math.max.apply(null,arr)
+
+
+
+Create Chainable (Cascading) Methods in Javascript
+	Why Use Cascading in JavaScript?
+		1. There is no need to create temporary variables to save each step of the process.
+		2. Now, every line of code clearly and succinctly expresses what it is doing, particularly when the name of each method is defined using verbs.
+		3. Our code is more maintainable because we have simple, lean, specialized methods.
+		4. Overall, one can easily read the “chainable” code, effortlessly type it, and comfortably understand it.
+
+
+	Function Composition is simply the idea of taking multiple functions and combining them together to create a result that can be easily maintained. As easily as swapping parts!
+Currying
+	Currying can be readily described: the process of composing multiple single-parameter functions until a result is achieved.
+	What’s important to realize about Currying(and if you have a keen eye you may have noticed this already) every function call only requires one parameter.
+	Currying often utilizes Recursion 
+
+
+Promises in JavaScript
+	blocking code
+	non blocking code
+	event driven design pattern
+	event life cycle
+	function stack
+	event queue
+	bubbling,
+
+	The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+	A Promise is in one of these states:
+		1. pending: initial state, neither fulfilled nor rejected.
+		2. fulfilled: meaning that the operation completed successfully.
+		3. rejected: meaning that the operation failed.
+		 A promise is said to be settled if it is either fulfilled or rejected, but not pending.
+	Promise protype methods
+		1. .then
+		2. .catch
+		3. .finally
+	Static Methods
+		1. Promise.resolve()
+		2. Promise.reject()
+		3. Promise.All 			--> The Promise.all(iterable) method returns a single Promise that resolves when all of 	the promises in the iterable argument have resolved or when the iterable argument contains no promises. It 		rejects with the reason of the first promise that rejects.all the promises were executed in parallel
+		4. Promise.race			-->	The Promise.race(iterable) method returns a promise that resolves or rejects as soon as one of the promises in the iterable resolves or rejects, with the value or reason from that promise.
+
+	Creating a Promise
+		const myFirstPromise = new Promise((resolve, reject) => {
+			// do something asynchronous which eventually calls either:
+			//
+			//   resolve(someValue); // fulfilled
+			// or
+			//   reject("failure reason"); // rejected
+		});
+
+	Common Mistakes
+		The first mistake is to not chain things together properly.
+	Thumb Rules for using promises
+		1. Use promises whenever you are using async or blocking code.
+		2. resolve maps to then and reject maps to catch for all practical purposes.
+		3. Make sure to write both .catch and .then methods for all the promises.
+		4. If something needs to be done in both the cases use .finally
+		5. We only get one shot at mutating each promise.
+		6. We can add multiple handlers to a single promise.
+		7. The return type of all the methods in Promise object whether they are static methods or prototype methods is again a Promise
+		8. In Promise.all the order of the promises are maintained in values variable irrespective of which promise was first resolved.
+
+Concurrency model and Event Loop [https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion]
+
+	https://developer.mozilla.org/files/4617/default.svg
+
+	stack
+	heap
+	Queue
+		A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function which gets called in order to handle the message.
+
+		At some point during the event loop, the runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter. As always, calling a function creates a new stack frame for that function's use.
+
+		The processing of functions continues until the stack is once again empty; then the event loop will process the next message in the queue (if there is one).
+
+	Event Loop
+		while (queue.waitForMessage()) {
+		queue.processNextMessage();
+		}
+		queue.waitForMessage() waits synchronously for a message to arrive if there is none currently.
+
+		"Run-to-completion"
+
+		Adding messages
+			In web browsers, messages are added anytime an event occurs and there is an event listener attached to it. If there is no listener, the event is lost. So a click on an element with a click event handler will add a message--likewise with any other event.
+			The function setTimeout is called with 2 arguments: a message to add to the queue, and a time value (optional; defaults to 0). The time value represents the (minimum) delay after which the message will actually be pushed into the queue. If there is no other message in the queue, the message is processed right after the delay; however, if there are messages, the setTimeout message will have to wait for other messages to be processed.
+			 For that reason, the second argument indicates a minimum time and not a guaranteed time.
+
+		Zero delays
+			Zero delay doesn't actually mean the call back will fire-off after zero milliseconds. Calling setTimeout with a delay of 0 (zero) milliseconds doesn't execute the callback function after the given interval.
+
+		Several runtimes communicating together
+			A web worker or a cross-origin iframe has its own stack, heap, and message queue. Two distinct runtimes can only communicate through sending messages via the postMessage method. This method adds a message to the other runtime if the latter listens to message events.
+
+
+
+
+
+OOP In JavaScript
+	The two important principles with OOP in JavaScript are Object Creation patterns (Encapsulation) and Code Reuse patterns (Inheritance).
+
+	Object Creation Pattern
+		1. the Combination Constructor/Prototype Pattern.
+			JavaScript Prototype
+				In JavaScript, you add methods and properties on the prototype property when you want instances of an object to inherit those methods and properties
+				The one disadvantage of overwriting the prototype is that the constructor property no longer points to the prototype, so we have to set it manually.
+			Prototype Methods
+				we create methods on the prototype (in the object literal) so that all instances of Users can have access to these methods
+
+	Inheritance in JavaScript
+		Parasitic Combination inheritance
+			Implementing the Parasitic Combination Inheritance Pattern
+				Prototypal Inheritance by Douglas Crockford
+					Object.create();
+
+
+					function inheritPrototype(childObject, parentObject) {
+						// As discussed above, we use the Crockford’s method to copy the properties and methods from the parentObject onto the childObject
+					// So the copyOfParent object now has everything the parentObject has
+						var copyOfParent = Object.create(parentObject.prototype);
+
+						//Then we set the constructor of this new object to point to the childObject.
+					// Why do we manually set the copyOfParent constructor here, see the explanation immediately following this code block.
+						copyOfParent.constructor = childObject;
+
+						// Then we set the childObject prototype to copyOfParent, so that the childObject can in turn inherit everything from copyOfParent (from parentObject)
+					childObject.prototype = copyOfParent;
+					}
+
+
+
+
+
+
+
+
+
+Local storage and Session Storage
+	Storage objects are simple key-value stores, similar to objects, but they stay intact through page loads. The keys and the values are always strings (note that, as with objects, integer keys will be automatically converted to strings). You can access these values like an object, or with the Storage.getItem() and Storage.setItem() methods. These three lines all set the colorSetting entry in the same way:
+
+		localStorage.colorSetting = '#a4509b';
+		localStorage['colorSetting'] = '#a4509b';
+		localStorage.setItem('colorSetting', '#a4509b');
+	It's recommended to use the Web Storage API (setItem, getItem, removeItem, key, length) to prevent the pitfalls associated with using plain objects as key-value stores.
+
+	The two mechanisms within Web Storage are as follows:
+
+		sessionStorage
+			maintains a separate storage area for each given origin that's available for the duration of the page session (as long as the browser is open, including page reloads and restores).
+		localStorage
+			does the same thing, but persists even when the browser is closed and reopened.
+
+	localStorage is similar to sessionStorage, except that while data stored in localStorage has no expiration time, data stored in sessionStorage gets cleared when the page session ends — that is, when the page is closed.
+	It should be noted that data stored in either localStorage or sessionStorage is specific to the protocol of the page.
+
+	Syntax
+		myStorage = window.localStorage;			// A Storage object which can be used to access the current origin's local storage space.
+
+		May Couse SecurityError
+
+		localStorage.setItem('myCat', 'Tom');
+		localStorage.getItem('myCat');
+		localStorage.removeItem('myCat');
+
+		// clear all items
+			localStorage.clear();
+	Feature-detecting localStorage
+		Testing for availability
+
+	LocalStorage JavaScript Limitations
+		Do not store sensitive user information in localStorage
+		It is not a substitute for a server based database as information is only stored on the browser
+		LocalStorage is limited to 5MB across all major browsers
+		LocalStorage is quite insecure as it has no form of data protection and can be accessed by any code on your web page.
+		LocalStorage is synchronous. Meaning each operation called would only execute one after the other.
+
+
+Web Cache  (https://www.digitalocean.com/community/tutorials/web-caching-basics-terminology-http-headers-and-caching-strategies)
+	Caching is the term for storing reusable responses in order to make subsequent requests faster.
+	A web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce server lag. A web cache system stores copies of documents passing through it; subsequent requests may be satisfied from the cache if certain conditions are met.[1] A web cache system can refer either to an appliance, or to a computer program.
+	All you need to do is ensure that each server response provides the correct HTTP header directives to instruct the browser on when and for how long the browser can cache the response.
+	When the server returns a response, it also emits a collection of HTTP headers, describing its content-type, length, caching directives, validation token, and more
+
+	Validating cached responses with ETags
+		The server uses the ETag HTTP header to communicate a validation token.
+		The validation token enables efficient resource update checks: no data is transferred if the resource has not changed.
+		The server generates and returns an arbitrary token, which is typically a hash or some other fingerprint of the contents of the file. The client doesn't need to know how the fingerprint is generated; it only needs to send it to the server on the next request. If the fingerprint is still the same, then the resource hasn't changed and you can skip the download.
+		the client automatically provides the ETag token in the "If-None-Match" HTTP request header.The server checks the token against the current resource. If the token hasn't changed, the server returns a "304 Not Modified" response, which tells the browser that the response it has in cache hasn't changed and can be renewed for another 120 seconds. Note that you don't have to download the response again, which saves time and bandwidth.
+
+	Cache-Control
+		Each resource can define its caching policy via the Cache-Control HTTP header.
+		Cache-Control directives control who can cache the response, under which conditions, and for how long.
+
+		From a performance optimization perspective, the best request is a request that doesn't need to communicate with the server: a local copy of the response allows you to eliminate all network latency and avoid data charges for the data transfer. To achieve this, the HTTP specification allows the server to return Cache-Control directives that control how, and for how long, the browser and other intermediate caches can cache the individual response.
+
+				Cache-Control Header
+					"no-cache" and "no-store"
+						:-"no-cache" indicates that the returned response can't be used to satisfy a subsequent request to the same URL without first checking with the server if the response has changed. As a result, if a proper validation token (ETag) is present, no-cache incurs a roundtrip to validate the cached response, but can eliminate the download if the resource has not changed.
+
+						By contrast, "no-store" is much simpler. It simply disallows the browser and all intermediate caches from storing any version of the returned response—for example, one containing private personal or banking data. Every time the user requests this asset, a request is sent to the server and a full response is downloaded.
+					"public" vs. "private"
+						If the response is marked as "public", then it can be cached, even if it has HTTP authentication associated with it, and even when the response status code isn't normally cacheable. Most of the time, "public" isn't necessary, because explicit caching information (like "max-age") indicates that the response is cacheable anyway.
+
+						By contrast, the browser can cache "private" responses. However, these responses are typically intended for a single user, so an intermediate cache is not allowed to cache them. For example, a user's browser can cache an HTML page with private user information, but a CDN can't cache the page.
+					"max-age"
+						This directive specifies the maximum time in seconds that the fetched response is allowed to be reused from the time of the request. For example, "max-age=60" indicates that the response can be cached and reused for the next 60 seconds.
+
+		https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/images/http-cache-decision-tree.png
+
+		Invalidating and updating cached responses
+			Locally cached responses are used until the resource "expires."
+			Embedding a file content fingerprint in the URL enables you to force the client to update to a new version of the response.
+			Each application needs to define its own cache hierarchy for optimal performance.
+
+			All HTTP requests that the browser makes are first routed to the browser cache to check whether there is a valid cached response that can be used to fulfill the request. If there's a match, the response is read from the cache, which eliminates both the network latency and the data costs that the transfer incurs.
+
+		The combination of ETag, Cache-Control, and unique URLs allows you to deliver the best of all worlds: long-lived expiration times, control over where the response can be cached, and on-demand updates.
+
+	Terminology
+		Origin server:
+		Cache hit ratio
+		Freshness
+		Stale content:
+		Validation
+		Invalidation
+	What Can be Cached?
+		Logos and brand images
+		Non-rotating images in general (navigation icons, for example)
+		Style sheets
+		General Javascript files
+		Downloadable Content
+		Media Files
+	Some items that you have to be careful in caching are:
+		HTML pages
+		Rotating images
+		Frequently modified Javascript and CSS
+		Content requested with authentication cookies
+	Some items that should almost never be cached are:
+		Assets related to sensitive data (banking info, etc.)
+		Content that is user-specific and frequently changed
+	Locations Where Web Content Is Cached
+		Browser cache:
+		Intermediary caching proxies
+		Reverse Cache:
+
+	Caching Headers
+		Expires
+		Cache-Control
+		Etag
+		Last-Modified
+		Content-Length
+		Vary
+Session and Cookie Management
+	Cookies
+		Cookie is a small piece of data sent by a server to a browser and stored on the user’s computer while the user is browsing. Cookies are produced and shared between the browser and the server using the HTTP Header.
+		It Allows server store and retrieve data from the client, It Stored in a file on the client side and maximum size of cookie that can stored is limited upto 4K in any web browser. Cookies have short time period because they have expiry date and time as soon as browser closed.
+
+		Creating cookie
+			The  setcookie(name, value, expiration); function is used for the cookie to be sent along with the rest of the HTTP headers
+		Cookie Attributes
+			1. Name
+			2. Value
+			3. Secure: Specifies whether or not the cookie should only be transmitted over a secure HTTPS connection.
+			4. Domain
+			5. Path: Specifies the server path of the cookie.
+			6. HTTPOnly: If set to TRUE the cookie will be accessible only through the HTTP protocol (the cookie will not be accessible by scripting languages). This setting can help to reduce identity theft through XSS attacks. Default is FALSE
+			7. Expires
+		Necessity of Cookies
+			1. Identifying Unique Visitors.
+			2. Http is a stateless protocol; cookies permit us to track the state of the application using small files stored on the user’s computer.
+			3. Recording the time each user spends on a website
+
+		Types Of Cookies
+			1. Session Cookie
+			2. Persistent Cookie
+			3. Third Party Cookie
+			4. Secure Cookie
+			5. HTTP Only Cookie
+			6. Zombies Cookie
+
+	Session
+		Session variables hold information about one single user, and are exist to all pages in one application.
+		Session ID:-A session ID or token is a unique number which is used to identify a user that has logged into a website. Session ID is stored inside server, it is assigns to a specific user for the duration of that user’s visit (session). The session ID can be stored as a cookie, form field, or URL.
+
+		Session hijacking
+			As we know different users have unique session ID when an attacker sniff the session via man-in-middle attack or via XSS and steal session ID or session token this is called session hijacking.
+		https://www.baeldung.com/java-servlet-cookies-session
+		https://www.journaldev.com/1907/java-session-management-servlet-httpsession-url-rewriting
+
+
+
+CORS Cross-Origin Resource Sharing
+	The browser uses the same-origin policy to determine if the request it is about to send is from the same origin or not. If it's not from the same origin, the browser first sends a preflight request to the server with an http Origin header that contains the domain the requesting page is hosted on. So, if a page on domain X wants to send a request to domain Y, the browser sends the header Origin: X to the server on domain Y.
+	The server answers with the Access-Control-Allow-Origin header.This header either contains a list of allowed origin domains or a wildcard indicating any and all domains are allowed to send cross-origin requests. If the origin domain is cleared, the browser sends the actual request. If it is not allowed, the request is blocked by the browser and you should get a nasty error in the console of your developer tools.
+
+	Configuring Tomcat For CORS (https://tomcat.apache.org/tomcat-8.0-doc/config/filter.html#CORS_Filter)
+		Configuring your web application in Tomcat to support CORS is pretty straight forward: all you have to do is add a CORS filter to your web.xml.
+
+			<filter>
+				<filter-name>CorsFilter</filter-name>
+				<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+				<init-param>
+					<param-name>cors.allowed.origins</param-name>
+					<param-value>http://blog.nicohaemhouts.com</param-value>
+				</init-param>
+			</filter>
+			<filter-mapping>
+				<filter-name>CorsFilter</filter-name>
+				<url-pattern>/*</url-pattern>
+			</filter-mapping>
+
+		Bare in mind that only GET and POST methods are supported and that data will always be posted with the Content-Type set to text/plain. Another gotcha is that you cannot mix HTTP and HTTPS. So, a page served through HTTP can only make cross-origin requests using HTTP. The same goes for HTTPS.
+
+Pending
+	Http Request/Response
+		Methods
+		Headers
+	Webworker/Service
+	Chrome Developer Tools
+	CommonJs
+	Browserify
+	SystemJS
